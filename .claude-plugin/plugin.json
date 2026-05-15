@@ -1,0 +1,13 @@
+{
+  "name": "study-this",
+  "version": "0.1.0",
+  "description": "Socratic-tutor active-reading plugin: ingest articles/videos/PDFs/pasted text, get a sourced summary with [TEXT]/[ME] attribution, a Mermaid concept map, automatic cross-links to your private vault, and an adversarial Q&A that pushes you past recall into synthesis.",
+  "author": {
+    "name": "fredmarquez"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fredmarquez/study-this"
+  }
+}
