@@ -52,7 +52,7 @@ If you want to test the plugin without going through the marketplace flow, point
 
 ```bash
 git clone https://github.com/fredmarquez/study-this ~/Projects/study-this
-claude --plugin-dir ~/Projects/study-this
+claude --plugin-dir ~/Projects/study-this/plugins/study-this
 ```
 
 Slash commands work the same once you're inside the session.
@@ -100,21 +100,24 @@ Most "summarize this article" tools optimize for *speed*. This one optimizes for
 ## Repository layout
 
 ```
-study-this/
+study-this/                          ← repo root, marketplace
 ├── .claude-plugin/
-│   ├── marketplace.json        ← lets users /plugin marketplace add this repo
-│   └── plugin.json             ← plugin manifest
-├── skills/
-│   └── study-this/
-│       ├── SKILL.md            ← main instructions (model-invoked)
-│       ├── REFERENCE.md        ← question typology, schemas, heuristics
-│       ├── EXAMPLES.md         ← one fully worked end-to-end session
-│       └── scripts/
-│           ├── fetch-youtube-transcript.sh
-│           └── fetch-article.sh
-├── commands/
-│   ├── study.md                ← /study-this:study entry point
-│   └── quiz.md                 ← /study-this:quiz entry point
+│   └── marketplace.json             ← catalog: lets users /plugin marketplace add this repo
+├── plugins/
+│   └── study-this/                  ← the plugin itself
+│       ├── .claude-plugin/
+│       │   └── plugin.json          ← plugin manifest
+│       ├── skills/
+│       │   └── study-this/
+│       │       ├── SKILL.md         ← main instructions (model-invoked)
+│       │       ├── REFERENCE.md     ← question typology, schemas, heuristics
+│       │       ├── EXAMPLES.md      ← one fully worked end-to-end session
+│       │       └── scripts/
+│       │           ├── fetch-youtube-transcript.sh
+│       │           └── fetch-article.sh
+│       └── commands/
+│           ├── study.md             ← /study-this:study entry point
+│           └── quiz.md              ← /study-this:quiz entry point
 ├── README.md
 └── LICENSE
 ```
