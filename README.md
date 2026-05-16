@@ -8,18 +8,32 @@ Every claim the agent makes is labelled `[TEXT]` (from the article) or `[ME]` (i
 
 ## Install
 
+Run these inside the **Claude Code CLI** (launch by running `claude` in a terminal — not the claude.ai web app, plugins are CLI-only):
+
 ```
-/plugin marketplace add fredmarquez/study-this
+/plugin marketplace add https://github.com/fredmarquez/study-this
 /plugin install study-this@study-this
 ```
 
 The first command adds this repo as a marketplace. The second installs the plugin from it.
 
-To check for updates:
+To check for updates later:
 
 ```
 /plugin marketplace update study-this
 ```
+
+### Why the HTTPS URL?
+
+Claude Code accepts a shorter `username/repo` shorthand (e.g. `fredmarquez/study-this`), but the shorthand defaults to **SSH cloning**, which fails on machines that have never connected to GitHub via SSH (most fresh installs). The HTTPS URL form works for everyone with no setup.
+
+If you'd rather use SSH (one-time fix for any future GitHub cloning), run this in your regular shell first:
+
+```bash
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+```
+
+Then the shorthand `fredmarquez/study-this` will work.
 
 ## Quick start
 
