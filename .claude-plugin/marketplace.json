@@ -1,0 +1,15 @@
+{
+  "name": "study-this",
+  "owner": {
+    "name": "fredmarquez"
+  },
+  "description": "Single-plugin marketplace for study-this, a Socratic-tutor active-reading plugin.",
+  "plugins": [
+    {
+      "name": "study-this",
+      "source": "./",
+      "description": "Socratic-tutor active-reading plugin: ingest articles, videos, PDFs, or pasted text; produces sourced summaries with [TEXT]/[ME] attribution, Mermaid concept maps, claim-based cross-linking against a private vault, and adversarial Q&A.",
+      "version": "0.1.0"
+    }
+  ]
+}

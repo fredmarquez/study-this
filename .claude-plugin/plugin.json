@@ -6,8 +6,7 @@
     "name": "fredmarquez"
   },
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fredmarquez/study-this"
-  }
+  "repository": "https://github.com/fredmarquez/study-this",
+  "keywords": ["reading", "study", "socratic", "vault", "notion", "mermaid"],
+  "homepage": "https://github.com/fredmarquez/study-this"
 }

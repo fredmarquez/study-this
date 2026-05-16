@@ -9,29 +9,57 @@ Every claim the agent makes is labelled `[TEXT]` (from the article) or `[ME]` (i
 ## Install
 
 ```
-/plugin install fredmarquez/study-this
+/plugin marketplace add fredmarquez/study-this
+/plugin install study-this@study-this
+```
+
+The first command adds this repo as a marketplace. The second installs the plugin from it.
+
+To check for updates:
+
+```
+/plugin marketplace update study-this
 ```
 
 ## Quick start
 
+Once installed, every slash command is namespaced with the plugin name:
+
 ```
-/study https://example.com/some-article
-/study /path/to/paper.pdf
-/study https://youtube.com/watch?v=...
-/study "paste any text directly in quotes"
+/study-this:study https://example.com/some-article
+/study-this:study /path/to/paper.pdf
+/study-this:study https://youtube.com/watch?v=...
+/study-this:study "paste any text directly in quotes"
 ```
+
+You can also just say what you want and let the skill pick it up:
+
+> "study this article: …"
+> "help me understand this paper"
+> "summarize and quiz me on what I just pasted"
 
 After the ingest produces the entry, the plugin offers to run a quiz. You can also start one later:
 
 ```
-/quiz                    # most recent entry
-/quiz attention-paper    # by slug
-/quiz "transformers"     # by topic match
+/study-this:quiz                    # most recent entry
+/study-this:quiz attention-paper    # by slug
+/study-this:quiz "transformers"     # by topic match
 ```
 
-## First run
+## Try it locally first (before installing)
 
-On first invocation the plugin asks you three things:
+If you want to test the plugin without going through the marketplace flow, point Claude Code at the cloned repo directly:
+
+```bash
+git clone https://github.com/fredmarquez/study-this ~/Projects/study-this
+claude --plugin-dir ~/Projects/study-this
+```
+
+Slash commands work the same once you're inside the session.
+
+## First-run setup
+
+On the very first invocation the plugin asks you three things:
 
 1. **Where should your learning vault live?** (default: `~/learning-vault/`) — a folder of markdown files, one per entry.
 2. **Where should the remote mirror live?**
@@ -68,6 +96,28 @@ During a quiz, you have a handful of single-word controls:
 ## Why this exists
 
 Most "summarize this article" tools optimize for *speed*. This one optimizes for *friction* — the kind that makes ideas stick. The default agent behavior (volunteer analogies, blur source and synthesis) is the opposite of what a good professor does. The honest-professor protocol baked into this plugin is the smallest set of barriers that meaningfully cut that drift.
+
+## Repository layout
+
+```
+study-this/
+├── .claude-plugin/
+│   ├── marketplace.json        ← lets users /plugin marketplace add this repo
+│   └── plugin.json             ← plugin manifest
+├── skills/
+│   └── study-this/
+│       ├── SKILL.md            ← main instructions (model-invoked)
+│       ├── REFERENCE.md        ← question typology, schemas, heuristics
+│       ├── EXAMPLES.md         ← one fully worked end-to-end session
+│       └── scripts/
+│           ├── fetch-youtube-transcript.sh
+│           └── fetch-article.sh
+├── commands/
+│   ├── study.md                ← /study-this:study entry point
+│   └── quiz.md                 ← /study-this:quiz entry point
+├── README.md
+└── LICENSE
+```
 
 ## License
 
