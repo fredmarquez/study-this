@@ -4,3 +4,6 @@
 .vscode/
 .idea/
 node_modules/
+
+# Claude Code session state (worktrees, etc.)
+.claude/
